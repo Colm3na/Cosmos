@@ -1,0 +1,40 @@
+################################################
+#                                              #
+#  Made with love in Colm3naSVQ by :           #
+#                                              #
+#  @wimel85(wiπΞl)->@cosmaut:matrix.org        #
+#  @DerFredy -> @4llfr33d0m:matrix.org         #                              
+#                                              #
+################################################
+
+- hosts: all
+  tasks:
+  - name: Modificando seeds
+    lineinfile:
+      name: ~/.gaiad/config/config.toml
+      regexp: '^seeds ='
+      line: 'seeds = ""'
+
+  - name: Modificando persistent_peers  
+    lineinfile:
+      name: ~/.gaiad/config/config.toml
+      regexp: '^persistent_peers ='
+      line: 'persistent_peers = "[AQUI TUS SENTRIES]"'
+  
+  - name: Modificando external_address  
+    lineinfile:
+      name: ~/.gaiad/config/config.toml
+      regexp: '^external_address ='
+      line: 'external_address = ""'
+  
+  - name: Modificando pex=false  
+    lineinfile:
+      name: ~/.gaiad/config/config.toml
+      regexp: '^pex ='
+      line: 'pex = false'
+
+  - name: Modificando addr_book_strict
+    lineinfile:
+      name: ~/.gaiad/config/config.toml
+      regexp: '^addr_book_strict ='
+      line: 'addr_book_strict = false'

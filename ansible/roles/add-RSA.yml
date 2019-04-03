@@ -1,0 +1,19 @@
+################################################
+#                                              #
+#  Made with love in Colm3naSVQ by :           #
+#                                              #
+#  @wimel85(wiπΞl)->@cosmaut:matrix.org        #
+#  @DerFredy -> @4llfr33d0m:matrix.org         #                              
+#                                              #
+################################################
+
+- hosts: all
+  tasks:
+  - name: Delete old autorized_keys (Playbook Add-sudoers.yml needed or use "-b -K")
+    shell: rm -Rf .ssh/authorized_keys
+    become: true
+
+  - name: Upload new autorized_keys 
+    copy:
+      dest: ~/.ssh/authorized_keys
+      src: common/files/authorized_keys

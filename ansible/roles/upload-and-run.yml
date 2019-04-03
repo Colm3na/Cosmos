@@ -1,0 +1,20 @@
+################################################
+#                                              #
+#  Made with love in Colm3naSVQ by :           #
+#                                              #
+#  @wimel85(wiπΞl)->@cosmaut:matrix.org        #
+#  @DerFredy -> @4llfr33d0m:matrix.org         #                              
+#                                              #
+################################################
+
+- hosts: all
+  tasks:
+    - name: Subir script al servidor
+      copy:
+        dest: /tmp/script.sh
+        src: $HOME/.ansible/script.sh
+        backup: yes
+        mode: u=rwx,g=r,o=r
+
+    - name: Ejecuta script subido
+      shell: /tmp/script.sh >> /tmp/hetzner-script.log

@@ -1,0 +1,16 @@
+################################################
+#                                              #
+#  Made with love in Colm3naSVQ by :           #
+#                                              #
+#  @wimel85(wiπΞl)->@cosmaut:matrix.org        #
+#  @DerFredy -> @4llfr33d0m:matrix.org         #                              
+#                                              #
+################################################
+
+- hosts: all
+  tasks:  # Download genesis.json
+    - name: Download genesis from url
+      get_url:
+        url: https://github.com/cosmos/testnets/raw/master/gaia-9002/genesis.json
+        dest: ~/.gaiad/config/
+        mode: u=rw,g=r,o=r

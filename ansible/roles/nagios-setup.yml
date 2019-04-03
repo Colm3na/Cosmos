@@ -1,0 +1,71 @@
+################################################
+#                                              #
+#  Made with love in Colm3naSVQ by :           #
+#                                              #
+#  @wimel85(wiπΞl)->@cosmaut:matrix.org        #
+#  @DerFredy -> @4llfr33d0m:matrix.org         #                              
+#                                              #
+################################################
+
+- hosts: all
+  tasks:
+  - name: Modify nrpe.cfg to allow our nagios server
+    lineinfile:
+      path: /etc/nagios/nrpe.cfg
+      regexp: '^allowed_hosts='
+      line: 'allowed_hosts=127.0.0.1,[IP DE NAGIOS]'
+    become: true
+
+  - name: Clean previous custom commands
+    shell: echo "# Custom commands" > /etc/nagios/nrpe_local.cfg
+    become: true
+
+  - name: Adding custom checks commands check_root
+    lineinfile:
+      path: /etc/nagios/nrpe_local.cfg
+      state: present
+      regexp: '^command[check_root]='
+      line: 'command[check_root]=/usr/lib/nagios/plugins/check_disk -w 20% -c 10% -p /dev/vda1'
+    become: true
+
+  - name: Adding custom checks commands check_peers
+    lineinfile:
+      path: /etc/nagios/nrpe_local.cfg
+      state: present
+      regexp: '^command[check_peers]='
+      line: 'command[check_peers]=/usr/lib/nagios/plugins/check_peers'
+    become: true
+
+  - name: Adding custom checks commands check_mem
+    lineinfile:
+      path: /etc/nagios/nrpe_local.cfg
+      state: present
+      regexp: '^command[check_mem]='
+      line: 'command[check_mem]=/usr/lib/nagios/plugins/check_mem -w 80 -c 90'
+    become: true
+
+  - name: Adding custom checks commands check_load
+    lineinfile:
+      path: /etc/nagios/nrpe_local.cfg
+      state: present
+      regexp: '^command[check_load]='
+      line: 'command[check_load]=/usr/lib/nagios/plugins/check_load -r -w .30,.25,.20 -c .50,.40,.30'
+    become: true
+
+  - name: Uploading nagios script check_peers 
+    copy:
+      dest: /usr/lib/nagios/plugins/check_peers
+      src: ../scripts/check_peers
+      mode: u=rwx,g=rx,o=rx
+    become: true
+
+  - name: Uploading nagios script check_mem
+    copy:
+      dest: /usr/lib/nagios/plugins/check_mem
+      src: ../scripts/check_mem
+      mode: u=rwx,g=rx,o=rx
+    become: true
+
+  - name: Restarting service nagios-nrpe-server
+    shell: /etc/init.d/nagios-nrpe-server restart
+    become: true

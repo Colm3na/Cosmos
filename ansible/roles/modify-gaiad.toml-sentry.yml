@@ -1,0 +1,23 @@
+################################################
+#                                              #
+#  Made with love in Colm3naSVQ by :           #
+#                                              #
+#  @wimel85(wiπΞl)->@cosmaut:matrix.org        #
+#  @DerFredy -> @4llfr33d0m:matrix.org         #                              
+#                                              #
+################################################
+
+- hosts: all
+  tasks:
+
+          #  - name: Eliminando minimum_fees in gaiad.toml
+          #    lineinfile:
+          #      name: ~/.gaiad/config/gaiad.toml
+          #      regexp: '^minimum_fees = "'
+          #      line: 'minimum_fees = ""'
+
+  - name: Ajustando minimun-gas-prices in gaiad.toml
+    lineinfile:
+      name: ~/.gaiad/config/gaiad.toml
+      regexp: '^minimum-gas-prices = "'
+      line: 'minimum-gas-prices = "0.025uatom"'

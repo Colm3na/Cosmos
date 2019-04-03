@@ -1,0 +1,19 @@
+################################################
+#                                              #
+#  Made with love in Colm3naSVQ by :           #
+#                                              #
+#  @wimel85(wiπΞl)->@cosmaut:matrix.org        #
+#  @DerFredy -> @4llfr33d0m:matrix.org         #                              
+#                                              #
+################################################
+
+- hosts: all
+  tasks:
+  - name: inserta bloque de lineas en fichero
+    blockinfile:
+      name: /etc/nagios/nrpe_local.cfg
+      block: |
+        command[check_root]=/usr/lib/nagios/plugins/check_disk -w 20% -c 10% -p /dev/mapper/validador--template--vg-root
+        command[check_peers]=/usr/lib/nagios/plugins/check_peers
+        command[check_mem]=/usr/lib/nagios/plugins/check_mem -w 80 -c 90 
+

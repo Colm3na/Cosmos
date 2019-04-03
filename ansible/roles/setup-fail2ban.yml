@@ -1,0 +1,32 @@
+################################################
+#                                              #
+#  Made with love in Colm3naSVQ by :           #
+#                                              #
+#  @wimel85(wiπΞl)->@cosmaut:matrix.org        #
+#  @DerFredy -> @4llfr33d0m:matrix.org         #                              
+#                                              #
+################################################
+
+- hosts: all
+  tasks:
+  - name: Modificando bantime
+    replace:
+      path: /etc/fail2ban/jail.conf
+      regexp: '^bantime  = 600'
+      replace: 'bantime  = 9600'
+    become: yes
+
+  - name: Modificando findtime
+    replace:
+      path: /etc/fail2ban/jail.conf
+      regexp: '^findtime  = 600'
+      replace: 'findtime  = 180'
+    become: yes
+
+  - name: Modificando maxretry
+    replace:
+      path: /etc/fail2ban/jail.conf
+      regexp: '^maxretry = 5'
+      replace: 'maxretry = 3'
+    become: yes
+

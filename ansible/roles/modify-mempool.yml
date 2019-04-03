@@ -1,0 +1,17 @@
+################################################
+#                                              #
+#  Made with love in Colm3naSVQ by :           #
+#                                              #
+#  @wimel85(wiπΞl)->@cosmaut:matrix.org        #
+#  @DerFredy -> @4llfr33d0m:matrix.org         #                              
+#                                              #
+################################################
+
+- hosts: all
+  tasks:
+
+  - name: Ajustando mempool en config.toml
+    lineinfile:
+      name: ~/.gaiad/config/config.toml
+      regexp: '^size = '
+      line: 'size = "500"'

@@ -1,0 +1,35 @@
+################################################
+#                                              #
+#  Made with love in Colm3naSVQ by :           #
+#                                              #
+#  @wimel85(wiπΞl)->@cosmaut:matrix.org        #
+#  @DerFredy -> @4llfr33d0m:matrix.org         #                              
+#                                              #
+################################################
+
+#*/2 * * * * /bin/bash -l -c ~/scripts/check-gaiad
+#*/2 * * * * /bin/bash -l -c ~/scripts/autovote > /dev/null 2>&1
+
+- hosts: all
+  tasks:
+    - name: Setup check-gaiad cron
+      cron:
+        name: check-gaia
+        minute: "*/2"
+        hour: "*"
+        day: "*"
+        month: "*"
+        weekday: "*"
+        job: /bin/bash -l -c ~/scripts/check-gaiad
+        #state: absent
+
+    - name: Setup cron autovote
+      cron:
+        name: autovote
+        minute: "*/2"
+        hour: "*"
+        day: "*"
+        month: "*"
+        weekday: "*"
+        job: /bin/bash -l -c ~/scripts/autovote > /dev/null 2>&1
+        #state: absent

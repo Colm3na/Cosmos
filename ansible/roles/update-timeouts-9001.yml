@@ -1,0 +1,52 @@
+################################################
+#                                              #
+#  Made with love in Colm3naSVQ by :           #
+#                                              #
+#  @wimel85(wiπΞl)->@cosmaut:matrix.org        #
+#  @DerFredy -> @4llfr33d0m:matrix.org         #                              
+#                                              #
+################################################
+
+- hosts: all
+  tasks:
+  - name: Modificando timeout_propose
+    lineinfile:
+      name: ~/.gaiad/config/config.toml
+      regexp: '^timeout_propose ='
+      line: 'timeout_propose = "3s"'
+
+  - name: Modificando timeout_propose_delta  
+    lineinfile:
+      name: ~/.gaiad/config/config.toml
+      regexp: '^timeout_propose_delta ='
+      line: 'timeout_propose_delta = "500ms"'
+  
+  - name: Modificando timeout_prevote    
+    lineinfile:
+      name: ~/.gaiad/config/config.toml
+      regexp: '^timeout_prevote ='
+      line: 'timeout_prevote = "1s"'
+  
+  - name: Modificando timeout_prevote_delta   
+    lineinfile:
+      name: ~/.gaiad/config/config.toml
+      regexp: '^timeout_prevote_delta ='
+      line: 'timeout_prevote_delta = "500ms"'
+
+  - name: Modificando timeout_precommit    
+    lineinfile:
+      name: ~/.gaiad/config/config.toml
+      regexp: '^timeout_precommit ='
+      line: 'timeout_precommit = "1s"'
+
+  - name: Modificando timeout_precommit_delta 
+    lineinfile:
+      name: ~/.gaiad/config/config.toml
+      regexp: '^timeout_precommit_delta ='
+      line: 'timeout_precommit_delta = "500ms"'
+
+  - name: Modificando timeout_commit     
+    lineinfile:
+      name: ~/.gaiad/config/config.toml
+      regexp: '^timeout_commit ='
+      line: 'timeout_commit = "5s"'

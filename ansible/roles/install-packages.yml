@@ -1,0 +1,30 @@
+################################################
+#                                              #
+#  Made with love in Colm3naSVQ by :           #
+#                                              #
+#  @wimel85(wiπΞl)->@cosmaut:matrix.org        #
+#  @DerFredy -> @4llfr33d0m:matrix.org         #                              
+#                                              #
+################################################
+
+- hosts: all
+  tasks:
+  - name: Install a list of packages
+    become: true
+    become_user: root
+    apt:
+      name: "{{ packages }}"
+      update_cache: yes
+    vars:
+      packages:
+      - jq
+      - nagios-nrpe-server
+      - nagios-plugins
+      - tmux
+      - iptables
+      - conntrack
+      - conntrackd
+      - nano
+      - htop
+      - iotop
+      - fail2ban
