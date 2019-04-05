@@ -1,0 +1,108 @@
+#!/bin/bash
+################################################
+#                                              #
+#  Made with love in Colm3naSVQ by :           #
+#                                              #
+#  @wimel85(wiπΞl)->@cosmaut:matrix.org        #
+#  @DerFredy -> @4llfr33d0m:matrix.org         #                              
+#                                              #
+################################################
+
+#Used variables
+min_stake=2000000
+fees="5000uatom"
+chain_id=`curl -s http://localhost:26657/status | jq -r '.result.node_info.network'`
+cosmosaddr=`gaiacli keys list | awk 'FNR==2{print $3}'`
+keyname=`gaiacli keys list | awk 'FNR==2{print $1}'`
+cosmosvaloper=`gaiacli keys show ${keyname} --bech=val | awk 'FNR==2{print $3}'`
+account_number=`gaiacli query account $cosmosaddr --chain-id=$chain_id --trust-node=true --output=json | jq -r '.value.BaseVestingAccount.BaseAccount.account_number'`
+
+#
+# Simple countdown timer
+#
+function countdown {
+  #	
+  # 2 days countdown in seconds	
+  # 60s*60min*24h*2days
+  # 
+  secs=$((60*60*24*2))
+  while [ $secs -gt 0 ]; do
+    echo -ne "Waiting $secs seconds \033[0K\r"
+    sleep 1
+    : $((secs--))
+  done
+}
+
+#
+# Read Wallet password
+#
+
+echo "Wallet password:"
+read -s password
+
+#
+# Start de loop
+#
+
+while true
+do
+  echo ""
+
+  # 
+  # First we clean the TXs cache
+  #
+
+  curl localhost:26657/unsafe_flush_mempool
+  sleep 5
+  echo ""
+
+  #
+  # Gets the rewards and waits for them to arrive
+  #
+
+  echo "Claiming the rewards with command:"
+  echo "gaiacli tx distr withdraw-rewards $cosmosvaloper --from=${cosmosaddr} --chain-id=$chain_id --commission --fees=${fees}"
+  echo ""
+  echo "${password}" | gaiacli tx distr withdraw-rewards $cosmosvaloper --from=${cosmosaddr} --chain-id=$chain_id --commission --fees=${fees} -y
+
+  #
+  # Waits for the rewards to arrive
+  #
+  sleep 60
+
+  #
+  # Get our STAKE balance in this round
+  #
+
+  amount_stake=$(gaiacli query account ${cosmosaddr} --chain-id=${chain_id} --trust-node=true --output=json | jq -r '.value.coins[].amount')
+
+  echo "Runing command:"
+  echo "amount_stake = gaiacli query account ${cosmosaddr} --chain-id=${chain_id} --trust-node=true --output=json | jq -r '.value.BaseVestingAccount.BaseAccount.coins[] | select(.denom=="uatom").amount'"
+  echo "We have $amount_stake muon ready to delegate"
+
+        if [[ "$amount_stake" -ge "$min_stake" && $amount_stake != "null" ]]; then
+
+                echo ""
+		# clean cache
+		curl localhost:26657/unsafe_flush_mempool
+		sleep 5
+	  	echo ""
+
+		#
+		# We do not want to stake everything. We save 1atom
+		#
+		amount="$((${amount_stake}-1000000))"
+                echo "We have ${amount_stake} and min is ${min_stake}muon. Let's stake them!"
+                echo "About to stake ${amount} uatom with command:"
+                echo "gaiacli tx staking delegate ${cosmosvaloper} ${amount}uatom --from=${keyname} --chain-id=${chain_id} --fees=${fees} -y"
+                echo ""
+                echo "${password}" | gaiacli tx staking delegate ${cosmosvaloper} ${amount}uatom --from=${keyname} --chain-id=${chain_id} --fees=${fees} -y
+		
+		echo "Done! Let's wait for a new round"
+		countdown
+        else
+                echo "Rewards amount ${amount_stake} is less than ${min_stake}uatom, it is not enought. Let's wait..."
+		countdown
+        fi
+  # Waits and starts again
+done

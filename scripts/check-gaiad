@@ -1,0 +1,27 @@
+#!/bin/bash
+################################################
+#                                              #
+#  Made with love in Colm3naSVQ by :           #
+#                                              #
+#  @wimel85(wiπΞl)->@cosmaut:matrix.org        #
+#  @DerFredy -> @4llfr33d0m:matrix.org         #                              
+#                                              #
+################################################
+# Runs gaiad in a tmux terminal. Use it as cronjob to keep gaiad alive
+#
+if pgrep -x "gaiad" > /dev/null
+then
+    echo "gaiad is Running"
+else
+    echo "Restarting gaiad"
+    tmux kill-server
+    tmux new-session -s "gaiad" -d -n "main"
+#    tmux send-keys -t "gaiad:main" C-z '~/bin/gaiad start --minimum_fees=1STAKE,1photino' Enter
+#    tmux send-keys -t "gaiad:main" C-z '~/bin/gaiad start --minimum-gas-prices=0.01photinos,0.0001stake' Enter
+    tmux send-keys -t "gaiad:main" C-z '~/bin/gaiad start' Enter
+    tmux split-window -v
+    tmux select-pane -t 1
+    tmux send-keys "~/scripts/block" C-m
+    echo "$(date +"%Y-%m-%d %T") gaiad Restarted" >> ~/gaiad.log
+fi
+

@@ -1,0 +1,41 @@
+#!/bin/bash
+################################################
+#                                              #
+#  Made with love in Colm3naSVQ by :           #
+#                                              #
+#  @wimel85(wiπΞl)->@cosmaut:matrix.org        #
+#  @DerFredy -> @4llfr33d0m:matrix.org         #                              
+#                                              #
+################################################
+
+echo "Starting Blocks monitoring proccess"
+contador=0
+while true
+do
+    #Bloque actual
+    ACTUAL_BLOCK=`curl -s http://localhost:26657/status | jq '.result.sync_info.latest_block_height'`
+    # espera unos segundos
+    sleep 7
+    # Siguiente bloque
+    NEXT_BLOCK=`curl -s http://localhost:26657/status | jq '.result.sync_info.latest_block_height'`
+    echo "$ACTUAL_BLOCK ==> $NEXT_BLOCK"
+    #compara ACTUAL_BLOCK y NEXT_BLOCK
+    #si son iguales sumamos contador y bucle principal
+    if [[ "$ACTUAL_BLOCK" == "$NEXT_BLOCK" ]]; then
+        echo "Son iguales"
+        contador=$((${contador} + 1))
+        echo "contador ==> $contador de 5"
+        #Si contador > 5  -> reinicia gaiad
+        if [[ "$contador" -ge "5" ]]; then
+            echo "Reiniciamos"
+            kill -9 $(pgrep gaiad)
+            tmux kill-server
+            contador=0
+            sleep 1
+            ~/scripts/check-gaiad
+        fi
+     #si son distintos ponemos a cero
+    else
+        contador=0
+    fi
+done
