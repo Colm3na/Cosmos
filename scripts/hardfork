@@ -1,0 +1,34 @@
+#!/bin/bash
+#
+# DANGER
+################################################
+#                                              #
+#  Made with love in Colm3naSVQ by :           #
+#                                              #
+#  @wimel85(wiπΞl)->@cosmaut:matrix.org        #
+#  @DerFredy -> @4llfr33d0m:matrix.org         #
+#                                              #
+################################################
+# DANGER use it carefully
+
+# service stop
+kill -9 $(pgrep gaiad)
+tmux kill-server
+
+# backup data base
+tar czf gaia-db.tgz ~/.gaiad/data
+# check backup
+if [[ $? != 0 ]] ; then
+    exit $?
+fi
+
+# Download genesis
+cd ~
+wget https://github.com/cosmos/game-of-stakes/raw/master/genesis.json
+cp ~/.gaiad/config/genesis.json ~/.gaiad/config/genesis.json.old
+cp ~/genesis.json ~/.gaiad/config/genesis.json
+
+# restet
+~/bin/gaiad unsafe-reset-all
+# restart
+~/scripts/check-gaiad

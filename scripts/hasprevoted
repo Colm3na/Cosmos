@@ -1,0 +1,13 @@
+#!/bin/bash
+################################################
+#                                              #
+#  Made with love in Colm3naSVQ by :           #
+#                                              #
+#  @wimel85(wiπΞl)->@cosmaut:matrix.org        #
+#  @DerFredy -> @4llfr33d0m:matrix.org         #
+#                                              #
+################################################
+# Shows if your validator has prevoted current round
+# Usefull in network restarts or halts
+
+curl -s 127.0.0.1:26657/consensus_state | jq .result.round_state.height_vote_set[].prevotes | grep $(gaiacli status | jq -r .validator_info.address | head -c 10)

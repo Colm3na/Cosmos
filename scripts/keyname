@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Author: Derfredy | @4llfr33d0m:matrix.org
+#
+# Shows keyname
+
+keyname=`gaiacli keys list | awk 'FNR==2{print $1}'`
+
+echo "keyname = $keyname"
+

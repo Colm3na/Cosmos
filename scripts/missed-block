@@ -1,0 +1,31 @@
+#!/bin/bash
+################################################
+#                                              #
+#  Made with love in Colm3naSVQ by :           #
+#                                              #
+#  @wimel85(wiπΞl)->@cosmaut:matrix.org        #
+#  @DerFredy -> @4llfr33d0m:matrix.org         #
+#                                              #
+################################################
+
+missed_block=0
+
+while true
+do
+  height=`gaiacli status| jq -r '.sync_info.latest_block_height'`
+  curl -s  http://localhost:26657/commit?height=${height} | grep $(gaiacli status| jq -r '.validator_info.address') > /dev/null
+
+  if [ $? -ne 0 ]
+  then
+    echo "WARNING: Missed Block ${height}"
+    ((missed_block++))
+    echo "Already missed $missed_block blocks"
+  else
+    missed_block=0
+    echo "OK $height"
+  fi
+
+sleep 5
+
+done
+
