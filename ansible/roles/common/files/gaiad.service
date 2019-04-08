@@ -1,0 +1,30 @@
+##############################################
+# Linux Service to start the node
+#
+# /lib/systemd/system/gaiad.service
+#
+# Author: DerFredy | @4llfr33d0m:matrix.org
+# 
+# Usage: sudo service start gaiad
+#
+# See the logs: sudo journalctl -f -u gaiad
+#
+##############################################
+[Unit]
+Description=Cosmos Gaia Node
+After=network.target
+After=network-online.target
+
+[Service]
+User=user
+Type=simple
+WorkingDirectory=/home/user/
+ExecStartPre=/bin/sleep 5
+ExecStart=/home/user/go/bin/gaiad start --home=/home/user/.gaiad
+TimeoutSec=30
+Restart=always
+RestartSec=5
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
