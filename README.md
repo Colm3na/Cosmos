@@ -12,5 +12,5 @@ Puedes encontrar información para los <a href="">delegadores</a> y los <a href=
 </p>
 
 <p align="center">
-Recuerda que si tienes alguna duda siempre puedes venir a la <a href="https://www.coworkingcolmena.com">Colmena</a> a resolverlas juntos.
+Recuerda que si tienes alguna duda siempre puedes venir a la <a href="https://www.coworkingcolmena.com">Colmena</a> para resolverla juntos.
 </p>
