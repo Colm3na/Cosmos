@@ -1,34 +1,34 @@
-## Validator setup (you can find all of this tips on [Cosmos documentation](https://cosmos.network/docs/validators/validator-setup.html#validator-setup) and [Gaia client](https://cosmos.network/docs/gaia/gaiacli.html#gaia-cli)):
+## configuración para el validador __(puedes encontrar estos tips en la [documentacion](https://cosmos.network/docs/validators/validator-setup.html#validator-setup) de Cosmos y el cliente [Gaia](https://cosmos.network/docs/gaia/gaiacli.html#gaia-cli))__:
 
-## Commands for `gaia-9002` & `Game of Stakes`:
+## Comandos para `gaia-9002` & `Game of Stakes`:
 
-* **Setting up new node:**
+* **Inicio de un nuevo nodo:**
 ```
 gaiad init --moniker <your_custom_moniker>
 ```
 
-* **Start gaiad:**
+* **Inicio gaiad:**
 ```
 gaiad start
 ```
 
-* **To troubleshot:**
+* **Para la resolución de problemas:**
 ```
 gaiad start --trace --log_level "*:debug"
 ```
 
-* **Check status gaiad:**
+* **Comprobar el estado de gaiad:**
 ```
 gaiacli status
 ```
 
-* **Generate `gentx` for `GoS`:**
+* **Generar el `gentx` para `GoS`** (recuerda modificar los valores):
 ```
 gaiad gentx --amount 10000STAKE --commission-rate "0.10" --commission-max-rate "1.00" --commission-max-change-rate "0.01" --pubkey $(gaiad tendermint show-validator) --name $(gaiacli keys list | awk 'FNR==2{print $1}')
 ```
 
-# Validator setup:
-* **Create validator:**
+# Setup Validator:
+* **Init validator:**
 ```
 gaiacli tx stake create-validator --amount=5STAKE --pubkey=$(gaiad tendermint show-validator) --moniker="choose a moniker" --chain-id=<chain_id> --from=<key_name> --commission-rate="0.10" --commission-max-rate="0.20" --commission-max-change-rate="0.01"
 
