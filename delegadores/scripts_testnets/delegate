@@ -1,0 +1,23 @@
+#!/bin/bash
+################################################
+#                                              #
+#  Made with love in Colm3naSVQ by :           #
+#                                              #
+#  @wimel85(wiπΞl)->@cosmaut:matrix.org        #
+#  @DerFredy -> @4llfr33d0m:matrix.org         #                              
+#                                              #
+################################################
+chain_id=$(curl -s http://localhost:26657/status | jq -r '.result.node_info.network')
+
+gaiacli keys list
+
+echo "¿Qué wallet quieres usar?(cosmos123...)"
+read -r wallet
+
+echo "¿Qué cantidad quieres delegar?"
+read -r amount
+
+echo "¿A qué validador has elegido?(cosmosvaloper...)"
+read -r delegator
+
+gaiacli tx staking delegate "${delegator}" "${amount}"muon --from="${wallet}" --chain-id="${chain_id}" --fees=10000muon -y
