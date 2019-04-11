@@ -1,4 +1,4 @@
-##  Esto es para empezar con los playbooks posibles, ordenados para la ejecución, necesita ejecutar estos comandos en la misma carpeta _`/roles`_ 
+##  Con estas indicaciones podemos empezar con los playbooks, ordenados para la ejecución, necesita ejecutar estos comandos en la misma carpeta _`/roles`_ 
 
 # Para los nodos _sentry_ :
 
