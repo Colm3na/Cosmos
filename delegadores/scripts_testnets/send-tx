@@ -1,0 +1,33 @@
+#!/bin/bash
+################################################
+#                                              #
+#  Made with love in Colm3naSVQ by :           #
+#                                              #
+#  @wimel85(wiπΞl)->@cosmaut:matrix.org        #
+#  @DerFredy -> @4llfr33d0m:matrix.org         #
+#                                              #
+################################################
+# Script para ver el balance de una wallet
+#
+# gaiacli tx send <destination_cosmos> 10faucetToken \
+# --chain-id=<chain_id> \
+# --from=<key_name> \
+#
+# Variables:
+chain_id=$(curl -s http://localhost:26657/status | jq -r '.result.node_info.network')
+
+gaiacli keys list
+
+echo  "¿Qué wallet quieres usar?(puedes usar su nombre)"
+read -r wallet
+
+echo "¿A qué wallet quieres enviar?"
+read -r destiny
+
+echo "¿Qué cantidad?"
+read -r amount
+
+echo "¿Quieres enviar muon o photino?"
+read -r coin
+
+gaiacli tx send "${destiny}" "${amount}""${coin}" --chain-id="${chain_id}" --from="${wallet}" --fees=10000photino -y
