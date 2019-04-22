@@ -27,4 +27,4 @@ read -r destiny
 echo "¿Qué cantidad?"
 read -r amount
 
-gaiacli tx send "${destiny}" "${amount}" --chain-id="${chain_id}" --from="${wallet}" --gas=auto -y
+gaiacli tx send "${destiny}" "${amount}"uatom --chain-id="${chain_id}" --from="${wallet}" --gas=auto -y
