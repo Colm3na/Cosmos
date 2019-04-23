@@ -25,4 +25,4 @@ read -r amount
 echo "¿A qué validador has elegido?(cosmosvaloper...)"
 read -r delegator
 
-gaiacli tx staking delegate "${delegator}" "${amount}"uatom --from="${wallet}" --gas=auto --chain-id="${chain_id}" --fees=5000uatom -y
+gaiacli tx staking delegate "${delegator}" "${amount}"uatom --from="${wallet}" --chain-id="${chain_id}" --fees=5000uatom -y
