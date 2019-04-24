@@ -17,9 +17,9 @@ sudo rm -Rf go1.11.5.linux-amd64.tar.gz
 
 cat <<EOT >> ~/.profile
 #Go:
-PATH="\$PATH:/usr/local/go/bin"
-GOPATH="\$HOME/go"
-PATH="\$PATH:\$GOROOT/bin:\$GOPATH/bin"
+export PATH="\$PATH:/usr/local/go/bin"
+export GOPATH="\$HOME/go"
+export PATH="\$PATH:\$GOROOT/bin:\$GOPATH/bin"
 EOT
 
 source /home/$USER/.profile
