@@ -1,0 +1,31 @@
+#!/bin/bash
+################################################
+#                                              #
+#  Made with love in Colm3naSVQ by :           #
+#  @wimel85(wiπΞl)->@cosmaut:matrix.org        #
+#  @DerFredy -> @4llfr33d0m:matrix.org         #
+#                                              #
+################################################
+#
+# Para realizar el voto
+# Las opciones son:
+# Yes - No - NoWithVeto - Abstain
+#
+# Variables:
+chain_id=$(curl -s http://localhost:26657/status | jq -r '.result.node_info.network')
+
+echo "Estas son las proposiciones que actualmente estan en proceso de votación:"
+gaiacli query gov proposals --status voting_period --chain-id="${chain_id}"
+
+gaiacli keys list
+
+echo  "¿Qué wallet quieres usar?(puedes usar su nombre)"
+read -r wallet
+
+echo "¿Cual es el ID de la proposición en la que quieres votar?(Este campo es el número que identifica la propuesta)"
+read -r propid
+
+echo "¿Cual es tu voto?(Las opciones son: Yes - No - NoWithVeto - Abstain)"
+read -r voto
+
+gaiacli tx gov vote "${propid}" "${voto}" --from="${wallet}" --chain-id="${chain_id}" --fees=5000uatom -y
