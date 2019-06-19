@@ -19,10 +19,13 @@ RUN apk add --no-cache $PACKAGES && \
     make install
 
 # Final image
-FROM alpine:edge
+#FROM alpine:edge
+FROM ubuntu
 
 # Install ca-certificates
-RUN apk add --update ca-certificates
+#RUN apk add --update ca-certificates
+ENV PACKAGES ca-certificates
+RUN apt update && apt install $PACKAGES -y
 WORKDIR /root
 
 # Copy over binaries from the build-env
@@ -31,4 +34,3 @@ COPY --from=build-env /go/bin/gaiacli /usr/bin/gaiacli
 
 # Run gaiad by default, omit entrypoint to ease using container with gaiacli
 CMD ["gaiad"]
-
