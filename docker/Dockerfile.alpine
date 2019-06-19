@@ -24,9 +24,16 @@ FROM ubuntu
 
 # Install ca-certificates
 #RUN apk add --update ca-certificates
-ENV PACKAGES ca-certificates
-RUN apt update && apt install $PACKAGES -y
+ENV PACKAGES ca-certificates wget git nodejs npm yarn curl
+RUN apt-get update && apt-get install $PACKAGES -y
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && apt-get install yarn -y
 WORKDIR /root
+
+# Descargamos repo de Lunie
+RUN npm i -g n && n 10.13.0
+RUN git clone https://github.com/luniehq/lunie.git && cd lunie && yarn install
 
 # Copy over binaries from the build-env
 COPY --from=build-env /go/bin/gaiad /usr/bin/gaiad
