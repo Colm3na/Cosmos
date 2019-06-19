@@ -8,7 +8,7 @@ ENV GOBIN '/root/go/bin'
 
 #  Install required dev tools to compile gaiad
 ###############################################################################
-RUN apt-get update && apt-get install -y --no-install-recommends wget git ca-certificates gcc make
+RUN apt-get update && apt-get install -y --no-install-recommends wget git ca-certificates gcc make build-essential curl
 
 
 #  Install golang
@@ -30,25 +30,14 @@ RUN cd /root/sources && git clone https://github.com/cosmos/cosmos-sdk
 WORKDIR /root/sources/cosmos-sdk
 RUN git fetch --tags
 RUN git checkout v0.34.6
-RUN cd /root/sources/cosmos-sdk && make && make tools && make install
+RUN cd /root/sources/cosmos-sdk && make install
 
 #  Download genesis file and links file from IPFS
 ###############################################################################
 RUN wget -O /genesis.json https://raw.githubusercontent.com/cosmos/launch/master/genesis.json 
 
-
-#  Copy startup scripts
-###############################################################################
-
-COPY start_script.sh start_script.sh
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x start_script.sh
-RUN chmod +x /entrypoint.sh
-
-
 #  Start
 ###############################################################################
 EXPOSE 26656 26657
-ENTRYPOINT ["/entrypoint.sh"]
-CMD ["./start_script.sh"]
+CMD ["gaiad"]
 
