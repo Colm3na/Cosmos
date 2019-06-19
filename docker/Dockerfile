@@ -36,8 +36,13 @@ RUN cd /root/sources/cosmos-sdk && make install
 ###############################################################################
 RUN wget -O /genesis.json https://raw.githubusercontent.com/cosmos/launch/master/genesis.json 
 
+#  Copy startup script
+###############################################################################
+COPY start_script.sh start_script.sh
+RUN chmod +x start_script.sh
+
 #  Start
 ###############################################################################
 EXPOSE 26656 26657
-CMD ["gaiad"]
+CMD ["./start_script.sh"]
 
