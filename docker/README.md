@@ -1,13 +1,23 @@
-Para compilar con lo mínimo:
+## Para compilar con lo mínimo:
 
-Creamos carpeta temporal.
+`
+mkdir tmp`
 
-mkdir tmp
-cd tmp
-git clone https://github.com/cosmos/cosmos-sdk.git
-cd cosmos-sdk
-git fetch --tags
-git checkout v0.35.0
+`
+cd tmp`
 
-docker build -t gaia .
+`
+git clone https://github.com/cosmos/cosmos-sdk.git`
+
+`
+cd cosmos-sdk`
+
+`
+git fetch --tags`
+
+`
+git checkout v0.35.0`
+
+`
+docker build -t gaia .`
 
