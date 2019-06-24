@@ -1,0 +1,1 @@
+docker run --name gaia -it -p 46657:46657 -p 46656:46656 -v /var/cosmos/.gaiad:/root/.gaiad -v /var/cosmos/.gaiacli:/root/.gaiacli gaia /bin/sh
