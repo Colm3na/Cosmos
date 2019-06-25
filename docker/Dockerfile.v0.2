@@ -1,7 +1,10 @@
-# Simple usage with a mounted data directory:
+# Simple usage
 # > docker build -t gaia .
-# > docker run -it -p 46657:46657 -p 46656:46656 -v ~/.gaiad:/root/.gaiad -v ~/.gaiacli:/root/.gaiacli gaia gaiad init
-# > docker run -it -p 46657:46657 -p 46656:46656 -v ~/.gaiad:/root/.gaiad -v ~/.gaiacli:/root/.gaiacli gaia gaiad start
+# > Iniciamos el nodo con:
+# > docker run -it gaia gaiad init
+# > Iniciamos la sincronizacion
+# > docker run -it gaia gaiad start
+
 FROM golang:alpine AS build-env
 
 # Set up dependencies
@@ -34,6 +37,8 @@ COPY --from=build-env /go/bin/gaiacli /usr/bin/gaiacli
 
 RUN mkdir -p /root/.gaiad/config
 COPY config/* /root/.gaiad/config/
+VOLUME /root/.gaiad
+
 #RUN wget -q -O /genesis.json https://raw.githubusercontent.com/cosmos/launch/master/genesis.json 
 
 #  Start
