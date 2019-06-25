@@ -1,13 +1,16 @@
 ## Para compilar con lo mínimo:
 
 `
-mkdir tmp`
+git clone git@github.com:Colm3na/Cosmos.git`
 
 `
-cd tmp`
+cd Cosmos/docker`
 
 `
 git clone https://github.com/cosmos/cosmos-sdk.git`
+
+`
+git clone https://github.com/luniehq/lunie.git`
 
 `
 cd cosmos-sdk`
@@ -16,7 +19,10 @@ cd cosmos-sdk`
 git fetch --tags`
 
 `
-git checkout v0.35.0`
+git checkout v0.34.7`
+
+`
+cd ..`
 
 `
 docker build -t gaia .`
