@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Start the first process
 tmux new-session -s "gaiad" -d -n "main"
 tmux send-keys -t "gaiad:main" C-z 'gaiad start' Enter

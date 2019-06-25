@@ -1,5 +1,4 @@
 #!/bin/sh
-mkdir -p /root/.gaiad/config
 
 if [ ! -f "/root/.gaiad/config/node_key.json" ]
 then
@@ -18,9 +17,4 @@ then
   cp /config.toml /root/.gaiad/config/
 fi
 
-if [ "$2" = 'init' ]
-then
-  return 0
-else
-  exec "$@"
-fi
+/root/start_script.sh
