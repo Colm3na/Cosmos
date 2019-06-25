@@ -27,7 +27,7 @@ FROM alpine:edge
 #FROM node:latest
 
 # Install ca-certificates
-RUN apk add --update ca-certificates wget curl
+RUN apk add --update ca-certificates bash git wget curl nodejs nodejs-npm yarn python make g++
 #RUN apt-get update && apt-get install ca-certificates -y
 WORKDIR /root
 
@@ -35,11 +35,11 @@ WORKDIR /root
 COPY --from=build-env /go/bin/gaiad /usr/bin/gaiad
 COPY --from=build-env /go/bin/gaiacli /usr/bin/gaiacli
 
-RUN mkdir -p /root/.gaiad/config
 COPY config/* /root/.gaiad/config/
+COPY lunie /root/lunie
+RUN cd lunie && yarn install
+RUN mkdir -p /root/.gaiad/config
 VOLUME /root/.gaiad
-
-#RUN wget -q -O /genesis.json https://raw.githubusercontent.com/cosmos/launch/master/genesis.json 
 
 #  Start
 ###############################################################################
