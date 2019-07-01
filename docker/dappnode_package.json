@@ -5,9 +5,9 @@
   "avatar": "/ipfs/Qmdj6YhkErGKB22hcLTe6WBvs3SunKREVUkkmDip18yLyX",
   "type": "service",
   "image": {
-    "path": "cosmos.public.dappnode.eth_0.0.2.tar.xz",
-    "hash": "/ipfs/QmfMDw1G9PPs6memG6pa5spkqA9GS95tMsTKc11Jui49LP",
-    "size": 28640642,
+    "path": "",
+    "hash": "",
+    "size": ,
     "restart": "always",
     "volumes": [
       "cosmos:/root/.gaiad"
