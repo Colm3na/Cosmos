@@ -54,7 +54,7 @@ echo "Wallet password:"
 read -s password
 
   echo "Submitting the proposal:"
-  echo "gaiacli tx gov submit-proposal --title $title --description $description --type $type --deposit=${deposit}uatom  --gas auto --gas-adjustment 1.5 --gas-prices ${gasprice}uatom --from=${keyname} --chain-id=$chain_id"
+  echo "gaiacli tx gov submit-proposal --title "$title" --description "$description" --type $type --deposit=${deposit}uatom  --gas auto --gas-adjustment 1.5 --gas-prices ${gasprice}uatom --from=${keyname} --chain-id=$chain_id"
 	gaiacli tx gov submit-proposal --title $title --description $description --type $type --deposit=${deposit}uatom --gas auto --gas-adjustment 1.5 --gas-prices ${gasprice}uatom --from=${keyname} --chain-id=$chain_id
 
  
