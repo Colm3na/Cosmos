@@ -1,6 +1,6 @@
 ## configuración para el validador __(puedes encontrar estos tips en la [documentacion](https://cosmos.network/docs/validators/validator-setup.html#validator-setup) de Cosmos y el cliente [Gaia](https://cosmos.network/docs/gaia/gaiacli.html#gaia-cli))__:
 
-## Comandos para `gaia-9002` & `Game of Stakes`:
+## Comandos para `Cosmos`:
 
 * **Inicio de un nuevo nodo:**
 ```
@@ -24,13 +24,13 @@ gaiacli status
 
 * **Generar el `gentx` para `GoS`** (recuerda modificar los valores):
 ```
-gaiad gentx --amount 10000STAKE --commission-rate "0.10" --commission-max-rate "1.00" --commission-max-change-rate "0.01" --pubkey $(gaiad tendermint show-validator) --name $(gaiacli keys list | awk 'FNR==2{print $1}')
+gaiad gentx --amount 10000uatom --commission-rate "0.10" --commission-max-rate "1.00" --commission-max-change-rate "0.01" --pubkey $(gaiad tendermint show-validator) --name $(gaiacli keys list | awk 'FNR==2{print $1}')
 ```
 
 # Setup Validator:
 * **Init validator:**
 ```
-gaiacli tx stake create-validator --amount=5STAKE --pubkey=$(gaiad tendermint show-validator) --moniker="choose a moniker" --chain-id=<chain_id> --from=<key_name> --commission-rate="0.10" --commission-max-rate="0.20" --commission-max-change-rate="0.01"
+gaiacli tx stake create-validator --amount=5uatom --pubkey=$(gaiad tendermint show-validator) --moniker="choose a moniker" --chain-id=<chain_id> --from=<key_name> --commission-rate="0.10" --commission-max-rate="0.20" --commission-max-change-rate="0.01"
 
 ```
 * **Edit validator description:**
@@ -95,12 +95,12 @@ gaiacli query account <account_cosmos>
 
 * **Send tokens:**
 ```
-gaiacli tx send --amount=10STAKE --chain-id=<chain_id> --from=<key_name> --to=<destination_cosmos>
+gaiacli tx send --amount=10uatom --chain-id=<chain_id> --from=<key_name> --to=<destination_cosmos>
 ```
 
 * **Bond tokens:**
 ```
-gaiacli tx stake delegate --amount=10STAKE --validator=<validator> --from=<key_name> --chain-id=<chain_id>
+gaiacli tx stake delegate --amount=10uatom --validator=<validator> --from=<key_name> --chain-id=<chain_id>
 ```
 
 * **See information about a validator:**
@@ -162,7 +162,7 @@ gaiacli query stake parameters
 
 * **Create a governance proposal:**
 ```
-gaiacli tx gov submit-proposal --title=<title> --description=<description> --type=<Text/ParameterChange/SoftwareUpgrade> --deposit=<40STAKE> --from=<name> --chain-id=<chain_id>
+gaiacli tx gov submit-proposal --title=<title> --description=<description> --type=<Text/ParameterChange/SoftwareUpgrade> --deposit=<40uatom> --from=<name> --chain-id=<chain_id>
 ```
 
 * **Query proposals (once created):**
@@ -175,9 +175,9 @@ gaiacli query gov proposal --proposal-id=<proposal_id>
 gaiacli query gov proposals
 ```
 
-* **Increased deposit proposals (default `10STAKE`):**
+* **Increased deposit proposals (default `10uatom`):**
 ```
-gaiacli tx gov deposit --proposal-id=<proposal_id> --deposit=<200STAKE> --from=<name> --chain-id=<chain_id>
+gaiacli tx gov deposit --proposal-id=<proposal_id> --deposit=<200uatom> --from=<name> --chain-id=<chain_id>
 ```
 
 * **Query all deposits submited (once a new proposal is created):**
