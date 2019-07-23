@@ -1,25 +1,25 @@
 <h1 align="center"> Esta es la <a href="https://cosmos.bigdipper.live/proposals/12">propuesta nº12</a> en la blockchain de Cosmos.</h1>
 <table align="center">
     <tr align="center">
-        <td scope="row"><b>Id de la propuesta</b></td>
+        <td><b>Id de la propuesta</b></td>
     </tr>
     <tr align="center">
         <td>12</td>
     </tr>
     <tr align="center">
-        <td scope="row"><b>Solicitante</b></td>
+        <td><b>Solicitante</b></td>
     </tr>
     <tr align="center">
         <td><a href="https://cosmos.bigdipper.live/validator/679B89785973BE94D4FDF8B66F84A929932E91C5">Sikka</a></td>
     </tr>
     <tr align="center">
-        <td scope="row"><b>Título</b></td>
+        <td><b>Título</b></td>
     </tr>
     <tr align="center">
         <td>¿Son los validadores con un 0% de comisión perjudiciales para el resto de validadores de Cosmos?</td>
     </tr>
     <tr align="center">
-        <td scope="row"> <b>Descripción</b></td>
+        <td> <b>Descripción</b></td>
     </tr>
     <tr>
         <td align="center">
