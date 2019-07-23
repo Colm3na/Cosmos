@@ -19,7 +19,7 @@
         <td><b>Título</b></td>
     </tr>
     <tr align="center">
-        <td>¿Son los validadores con un 0% de comisión perjudiciales para el resto de validadores de Cosmos?</td>
+        <td>¿Son los validadores con un 0% de comisión perjudiciales para el Cosmos-hub?</td>
     </tr>
     <tr align="center">
         <td> <b>Descripción</b></td>
