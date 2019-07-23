@@ -69,7 +69,7 @@ go version go1.12.7 linux/amd64
 </details>
 
 <sumary>
-<h2 align="center"> Clonamos el repositorio de [gaia](https://github.com/cosmos/gaia.git), <i>usamos la rama <a href="https://github.com/cosmos/gaia/releases/tag/v1.0.0-rc1">1.0.0-rc1</a></i> e instalamos: </h2>
+  <h2 align="center"> Clonamos el repositorio de <a href="https://github.com/cosmos/gaia.git">gaia</a>, <i>usamos la rama <a href="https://github.com/cosmos/gaia/releases/tag/v1.0.0-rc1">1.0.0-rc1</a></i> e instalamos: </h2>
 </sumary>
 <details>
 
