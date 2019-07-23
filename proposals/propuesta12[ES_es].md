@@ -1,4 +1,7 @@
 <h1 align="center"> Esta es la <a href="https://cosmos.bigdipper.live/proposals/12">propuesta nº12</a> en la blockchain de Cosmos.</h1>
+
+<p><a href="https://ipfs.io/ipfs/QmQ6641mMx9QEcj9W4w877KbyPgwzK1ZCcyk7WWhToQust">Aquí</a> está la traducción en IPFS.</p>
+
 <table align="center">
     <tr align="center">
         <td><b>Id de la propuesta</b></td>
