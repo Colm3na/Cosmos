@@ -69,7 +69,10 @@ go version go1.12.7 linux/amd64
 </details>
 
 <sumary>
-  <h2 align="center"> Clonamos el repositorio de <a href="https://github.com/cosmos/gaia.git">gaia</a>, <i>usamos la rama <a href="https://github.com/cosmos/gaia/releases/tag/v1.0.0-rc1">1.0.0-rc1</a></i> e instalamos: </h2>
+  <h2 align="center"> Clonamos el repositorio de 
+    <a href="https://github.com/cosmos/gaia.git">gaia</a>, 
+      <i>usamos la rama <a href="https://github.com/cosmos/gaia/releases/tag/v1.0.0-rc1">1.0.0-rc1</a></i> e instalamos:
+  </h2>
 </sumary>
 <details>
 
@@ -140,6 +143,14 @@ c24f496b951148697f8a24fd749786075c128f00@35.203.176.214:26656
 6be0856f6365559fdc2e9e97a07d609f754632b0@cosmos-gaia-13004-seed.nodes.polychainlabs.com:26656
 ```
 
+- Los __persistent peers__ de la <a href="https://www.coworkingcolmena.com">Colmena</a>,<a href="https://delega.io"> Delega Networks</a> y <a href="https://dragonstake.io/#/">Dragon Stake</a> son:
+
+```
+06b158b29797610476e621f28867cbae926fd1d3@163.172.129.132:26656
+
+3d354e7383afa29b5bf9741fa4b9831403e880c5@51.15.127.68:26656
+```
+
 >::Iniciamos el nodo::
 
 ```
@@ -148,8 +159,10 @@ gaiad start
 </details>
 
 
-- Recuerda que toda la información la puedes encontrar en su [RIOT](https://riot.im/app/#/room/#cosmos_validators_technical_updates:matrix.org). 
+- Recuerda que toda la información sobre actualizaciones y más las puedes encontrar en su canal de [RIOT](https://riot.im/app/#/room/#cosmos_validators_technical_updates:matrix.org). 
 
-- Comenzará el proceso de actualización a la 1 PM PST y se establece la hora del génesis a la 1:30PM PST.
+- [Este](https://matrix.to/#/!vIMgGaMqkLIWPCZvPF:matrix.org?via=matrix.org&via=kde.org&via=ru-matrix.org) es el RIOT de Cosmos.
 
+- [Este](https://t.me/cosmosproject) es su canal de Telegram.
 
+- [Este](https://t.me/Cosmos_Network_ES) es el canal de Telegram en Español.
