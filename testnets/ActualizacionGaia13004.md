@@ -1,6 +1,6 @@
 <h1 align="center"> Aquí se describen los pasos necesarios para actualizar el nodo de Cosmos en la Testnet <code>Gaia-13003</code> a <code>Gaia-13004</code> </h1> 
 
-[Este](https://github.com/cosmos/gaia) es el reposotorio de Cosmos para gaia y [este](https://github.com/cosmos/cosmos-sdk/) 
+[Este](https://github.com/cosmos/gaia) es el repositorio de Cosmos para gaia y [este](https://github.com/cosmos/cosmos-sdk/) 
 el repositorio para el sdk de Cosmos.
 
 <sumary>
