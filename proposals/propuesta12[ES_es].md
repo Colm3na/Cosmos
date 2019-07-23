@@ -42,7 +42,7 @@
                 https://forum.cosmos.network/t/governance-limit-validators-from-0-commission-fee/2182</a>
             <br>
             <br>
-            &nbsp;Esta propuesta NO propone un mínimo exigido por el protocolo. Es simplemente una propuesta de orientación para 
+            &nbsp;Esta propuesta NO propone un mínimo exigido por el protocolo. Es simplemente una propuesta de orientación para ss
             consultar el punto de vista de los poseedores de átomos como un conjunto.
             <br>
             <br>
@@ -58,8 +58,8 @@
             sobre esta propuesta de gobierno, o exponer una explicación escrita más larga como un foro o un artículo en un blog.
             <br>
             <br>
-            &nbsp;La pregunta sobre esta propuesta es "¿Son los validadores que cobran 0% de comisión perjudiciales para el buen funcionamiento del Hub de Cosmos?"
-            Un voto afirmativo indica que <b>Si</b> es perjudicial para el buen funcionamiento de la red, y un voto negativo indica que <b>NO</b> son perjudiciales.
+            &nbsp;La pregunta sobre esta propuesta es "¿Son los validadores que cobran 0% de comisión perjudiciales para el buen funcionamiento del Hub de Cosmos?".
+             &nbsp;Un voto afirmativo indica que <b>Si</b> es perjudicial para el buen funcionamiento de la red, y un voto negativo indica que <b>NO</b> son perjudiciales.
         </td>
     </tr>
     <tr align="center">
