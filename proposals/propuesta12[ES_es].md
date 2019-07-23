@@ -62,4 +62,22 @@
             Un voto afirmativo indica que <b>Si</b> es perjudicial para el buen funcionamiento de la red, y un voto negativo indica que <b>NO</b> son perjudiciales.
         </td>
     </tr>
+    <tr align="center">
+        <td><b>Tipo de la propuesta</b></td>
+    </tr>
+    <tr align="center">
+        <td>Texto</td>
+    </tr>
+    <tr align="center">
+        <td><b>Estado de la propuesta</b></td>
+    </tr>
+    <tr align="center">
+        <td>Periodo de votación</td>
+    </tr>
+    <tr align="center">
+        <td><b>Depósito</b></td>
+    </tr>
+    <tr align="center">
+        <td>514 ATOMs</td>
+    </tr>
 </table>
