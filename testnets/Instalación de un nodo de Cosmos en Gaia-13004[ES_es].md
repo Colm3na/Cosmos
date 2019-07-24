@@ -23,7 +23,7 @@ sudo rm -Rf go1.12.7.linux-amd64.tar.gz
 
 ## Añadimos Go a nuestro [PATH](https://es.wikipedia.org/wiki/PATH_(informática)).
 
->::Abrimos el archivo para añadirle algunas líneas con vim __(en mi caso uso vim, podemos cambiarlo por nano u otro editor)__, **recuerda modificar "<USER>" por tu usuario**::
+>::Abrimos el archivo para añadirle algunas líneas con vim __(en mi caso uso vim, podemos cambiarlo por nano u otro editor)__, **recuerda modificar `<USER>` por tu usuario**::
 
 ```
 vim /home/<USER>/.profile
