@@ -158,12 +158,80 @@ c24f496b951148697f8a24fd749786075c128f00@35.203.176.214:26656
 gaiad tendermint show-node-id
 ```
 
-
 ## Iniciamos el nodo:
 
 ```
 gaiad start
 ```
 
+## Añadir gaiad como un servicio de sistema:
 
+>::Entramos en la carpeta::
 
+```
+cd /etc/systemd/system/
+```
+
+>::Creamos un archivo llamado `gaiad.service`::
+
+```
+sudo vim gaiad.service
+```
+
+>::Dentro copiamos lo siguiente, **recordad cambiar USER por vuestro usuario**::
+
+```
+[Unit]
+Description=Cosmos Gaia Node
+After=network.target
+
+[Service]
+Type=simple
+User=USER
+WorkingDirectory=/home/USER
+ExecStart=/home/USER/go/bin/gaiad start
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
+```
+
+>**Paramos `gaiad` si lo tenemos funcionando antes de seguir!!**
+
+>::Activamos el servicio y lo iniciamos::
+
+```
+sudo systemctl enable gaiad.service 
+
+sudo systemctl start gaiad.service
+```
+
+>::Para comprobar que el servicio está funcionando y ver el estado creamos un script::
+
+```
+vim chechGaiad
+```
+
+>::Copiamos lo siguiente, guardamos y salimos::
+
+```
+#!/bin/bash
+#
+#
+sudo journalctl -f -u gaiad.service
+```
+
+>::Damos permisos de ejecución:
+
+```
+chmod +x checkgaiad
+```
+
+>::Ejecutamos el script para ver la información del nodo::
+
+```
+./checgaiad
+```
+>_Aunque nosotros paremos el script, el servicio de gaia seguirá funcionando, y en caso de reiniciarse la máquina el servicio de gaia se iniciará con el sistema_
