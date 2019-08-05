@@ -2,7 +2,7 @@
 
 # If we need to delete address:
 ```
-gaiacli keys delete $(gaiacli keys list | awk 'FNR==2{print $1}') 
+gaiacli keys delete $(gaiacli keys list -o=json | jq -r '.[].name') 
 ```
 
 # Reset values:
@@ -22,7 +22,7 @@ gaiacli keys add --recover <ADDRESSNAME>
 
 # Run `gaiad init`:
 ```
-gaiad init --moniker=$(gaiacli keys list | awk 'FNR==2{print $1}') 
+gaiad init --moniker=$(gaiacli keys list -o=json | jq -r '.[].name') 
 ```
 
 # Download genesis:
@@ -32,7 +32,7 @@ curl https://raw.githubusercontent.com/cosmos/game-of-stakes/master/genesis.json
 
 # Generate `gentx`:
 ```
-gaiad gentx --amount 10000STAKE --commission-rate "0.10" --commission-max-rate "1.00" --commission-max-change-rate "0.01" --pubkey $(gaiad tendermint show-validator) --name $(gaiacli keys list | awk 'FNR==2{print $1}') 
+gaiad gentx --amount 10000STAKE --commission-rate "0.10" --commission-max-rate "1.00" --commission-max-change-rate "0.01" --pubkey $(gaiad tendermint show-validator) --name $(gaiacli keys list -o=json | jq -r '.[].name') 
 ```
 
 # See the file `gentx` (use tab to fill), copy and send a `PR` to repo of [Game of Steaks](https://github.com/cosmos/game-of-stakes/pulls):

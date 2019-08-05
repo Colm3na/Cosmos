@@ -9,8 +9,8 @@
 ################################################
 # Is my validator jailed? 
 
-keyname=`gaiacli keys list | awk 'FNR==2{print $1}'`
+keyname=`gaiacli keys list -o=json | jq -r '.[].name'`
 chain_id=`curl -s http://localhost:26657/status | jq -r '.result.node_info.network'`
-cosmosvaloper=`gaiacli keys show ${keyname} --bech=val | awk 'FNR==2{print $3}'`
+cosmosvaloper=`gaiacli keys show ${keyname} --bech=val --output=json | jq -r '.address'`
 
 gaiacli query staking validator $cosmosvaloper --chain-id=$chain_id --output=json | jq '.jailed'

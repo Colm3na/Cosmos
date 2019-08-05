@@ -49,5 +49,5 @@
 3. **Deposita tu participación, _recuerda cambiar la cantidad_:**
  
 ```
-gaiacli tx stake create-validator --amount=10STAKE --chain-id=$(curl -s http://localhost:26657/status | jq -r '.result.node_info.network') --pubkey=$(gaiad tendermint show-validator) --moniker=$(gaiacli keys list | awk 'FNR==2{print $1}') --from=$(gaiacli keys list | awk 'FNR==2{print $3}') --commission-rate="0.10" --commission-max-rate="0.20" --commission-max-change-rate="0.01"
+gaiacli tx stake create-validator --amount=10STAKE --chain-id=$(curl -s http://localhost:26657/status | jq -r '.result.node_info.network') --pubkey=$(gaiad tendermint show-validator) --moniker=$(gaiacli keys list -o=json | jq -r '.[].name') --from=$(gaiacli keys list -o=json | jq -r '.[].name') --commission-rate="0.10" --commission-max-rate="0.20" --commission-max-change-rate="0.01"
 ```

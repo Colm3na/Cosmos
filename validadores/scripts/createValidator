@@ -8,7 +8,7 @@
 #                                              #
 ################################################
 
-keyname=`gaiacli keys list | awk 'FNR==2{print $1}'`
+keyname=`gaiacli keys list -o=json | jq -r '.[].name'`
 chain_id=`curl -s http://localhost:26657/status | jq -r '.result.node_info.network'`
 pubkey=`gaiad tendermint show-validator`
 

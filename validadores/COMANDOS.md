@@ -24,7 +24,7 @@ gaiacli status
 
 * **Generar el `gentx` para `GoS`** (recuerda modificar los valores):
 ```
-gaiad gentx --amount 10000uatom --commission-rate "0.10" --commission-max-rate "1.00" --commission-max-change-rate "0.01" --pubkey $(gaiad tendermint show-validator) --name $(gaiacli keys list | awk 'FNR==2{print $1}')
+gaiad gentx --amount 10000uatom --commission-rate "0.10" --commission-max-rate "1.00" --commission-max-change-rate "0.01" --pubkey $(gaiad tendermint show-validator) --name $(gaiacli keys list -o=json | jq -r '.[].name')
 ```
 
 # Setup Validator:
@@ -80,7 +80,7 @@ gaiacli query slashing signing-info <validator-pubkey> --chain-id=<chain_id>
 
 * **Unjail validator:**
 ```
-gaiacli tx slashing unjail --from=$(gaiacli keys list | awk 'FNR==2{print $1}') --chain-id=game_of_stakes_5 --trust-node=true
+gaiacli tx slashing unjail --from=$(gaiacli keys list -o=json | jq -r '.[].name') --chain-id=game_of_stakes_5 --trust-node=true
 ```
 
 * **confirm validator is running:**
@@ -221,22 +221,22 @@ curl -s http://localhost:26657/status | jq -r '.result.node_info.network'
 
 * **Account Cosmos:**
 ```
-gaiacli keys list | awk 'FNR==2{print $3}'
+gaiacli keys list -o=json | jq -r '.[].name'
 ```
 
 * **Key name:**
 ```
-gaiacli keys list | awk 'FNR==2{print $1}'
+gaiacli keys list -o=json | jq -r '.[].name'
 ```
 
 * **Cosmosvaloper:**
 ```
-gaiacli keys show $(gaiacli keys list | awk 'FNR==2{print $1}') --bech=val | awk 'FNR==2{print $3}'
+gaiacli keys show $(gaiacli keys show ${keyname} --bech=val --output=json | jq -r '.address'')
 ```
 
 * **Balance:**
 ```
-gaiacli query account $(gaiacli keys list | awk 'FNR==2{print $3}') --chain-id=${chain_id} --trust-node=true | jq -r '.value.coins[0].amount'
+gaiacli query account $(gaiacli keys list -o=json | jq -r '.[].address') --chain-id=${chain_id} --trust-node=true | jq -r '.value.coins[0].amount'
 ```
 * **Proposal id:**
 ```

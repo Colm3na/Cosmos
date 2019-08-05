@@ -11,7 +11,7 @@
 
 chain_id=`curl -s http://localhost:26657/status | jq -r '.result.node_info.network'`
 
-account_cosmos=`gaiacli keys list | awk 'FNR==2{print $3}'`
+account_cosmos=`gaiacli keys list -o=json | jq -r '.[].address'`
 
 gaiacli query account $account_cosmos --chain-id=$chain_id --trust-node=true --output=json | jq
 

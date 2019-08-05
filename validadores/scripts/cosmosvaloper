@@ -9,8 +9,8 @@
 ################################################
 # Shows cosmovaloper
 
-keyname=`gaiacli keys list | awk 'FNR==2{print $1}'`
-cosmovaloper=`gaiacli keys show ${keyname} --bech=val | awk 'FNR==2{print $3}'`
+keyname=`gaiacli keys list -o=json | jq -r '.[].name'`
+cosmovaloper=`gaiacli keys show ${keyname} --bech=val --output=json | jq -r '.address'`
 
 echo "cosmovaloper = $cosmovaloper"
 

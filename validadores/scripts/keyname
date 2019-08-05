@@ -4,7 +4,7 @@
 #
 # Shows keyname
 
-keyname=`gaiacli keys list | awk 'FNR==2{print $1}'`
+keyname=`gaiacli keys list -o=json | jq -r '.[].name'`
 
 echo "keyname = $keyname"
 

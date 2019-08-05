@@ -8,7 +8,7 @@
 #                                              #
 ################################################
 
-account_cosmos=`gaiacli keys list | awk 'FNR==2{print $3}'`
+account_cosmos=`gaiacli keys list -o=json | jq -r '.[].address'`
 
 echo "account_cosmos = $account_cosmos"
 

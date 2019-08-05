@@ -12,9 +12,9 @@
 min_stake=2000000
 fees="5000uatom"
 chain_id=`curl -s http://localhost:26657/status | jq -r '.result.node_info.network'`
-cosmosaddr=`gaiacli keys list | awk 'FNR==2{print $3}'`
-keyname=`gaiacli keys list | awk 'FNR==2{print $1}'`
-cosmosvaloper=`gaiacli keys show ${keyname} --bech=val | awk 'FNR==2{print $3}'`
+cosmosaddr=`gaiacli keys list -o=json | jq -r '.[].address'`
+keyname=`gaiacli keys list -o=json | jq -r '.[].name'`
+cosmosvaloper=`gaiacli keys show ${keyname} --bech=val --output=json | jq -r '.address'`
 account_number=`gaiacli query account $cosmosaddr --chain-id=$chain_id --trust-node=true --output=json | jq -r '.value.BaseVestingAccount.BaseAccount.account_number'`
 
 #
