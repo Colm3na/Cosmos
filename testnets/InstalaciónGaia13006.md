@@ -87,4 +87,6 @@ gaiad tendermint show-node-id
 gaiad start
 ```
 
->Si queremos poner gaia como un servicio de sistema podemos seguir [estos](https://github.com/Colm3na/Cosmos/blob/master/testnets/Instalación%20de%20un%20nodo%20de%20Cosmos%20en%20Gaia-13004%5BES_es%5D.md#añadir-gaiad-como-un-servicio-de-sistema) pasos
+>Si queremos poner gaia como un servicio de sistema podemos seguir [estos](https://github.com/Colm3na/Cosmos/blob/master/testnets/Instalación%20de%20un%20nodo%20de%20Cosmos%20en%20Gaia-13004%5BES_es%5D.md#añadir-gaiad-como-un-servicio-de-sistema) pasos.
+
+>[Este](diffGenesis13k.txt) archivo contiene un diff entre el genesis de `gaia-13005` y `gaia-13006`.
