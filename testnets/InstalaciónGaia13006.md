@@ -1,4 +1,4 @@
-Aquí se describen los pasos para instalar un nodo de Cosmos en la testnet gaia-13006.
+Aquí se describen los pasos para instalar un nodo de Cosmos en la testnet [gaia-13006](https://hubble.figment.network/cosmos/chains/gaia-13006).
 
 Si necesitas instalar Go puedes ver los pasos [aquí](https://github.com/Colm3na/Cosmos/blob/master/testnets/Instalación%20de%20un%20nodo%20de%20Cosmos%20en%20Gaia-13004%5BES_es%5D.md#instalamos-la-última-versión-de-go), recuerda que debes clonar el repositorio en el `/home` para no tener problemas.
 
