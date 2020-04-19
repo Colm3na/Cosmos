@@ -15,7 +15,7 @@
 We, [@wimel85](https://github.com/wimel) and [@DerFredy](https://github.com/derfredy) elaborated this table with some relevant network information. We discovered that almost nobody is hiding their IP's and almost everybody has RPC port open. There are even some nodes with too many open ports and running services.
 The color Green represents well configured parameter.
 
-The aim of this document is to help our validator set to gain certain skills needed for running a Sentinel tendermint node during this Sentinel Testnet phase and prepare the setup for the mainnet. We have detected severe to medium lack of proper configuration in the actual set and is our wish that every validator do their best to improve the network security.
+The aim of this document is to help our validator set to gain certain skills needed for running a tendermint node during this Testnet phase and prepare the setup for the mainnet. We have detected severe to medium lack of proper configuration in the actual set and is our wish that every validator do their best to improve the network security.
 Basically we encourage almost every validator to spin up a new machine. That new machine will be the new validator. The old one will be reused as a public sentry node. It is up to the validator set to form alliances and share resources (such as sentries) between them. We think that practice of dealing with sentry nodes is important. Actually almost all validators seem to be running without any sentry.
 
 ### Spin up a new Full-node quickly
