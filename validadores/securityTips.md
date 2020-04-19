@@ -2,13 +2,13 @@
 
 ## Index
 
-[Spin up a new Full-node quickly](/securityTips.md#spin-up-a-new-full-node-quickly)
+[Spin up a new Full-node quickly](/validadores/securityTips.md#spin-up-a-new-full-node-quickly)
 
-[Move the “Validator soul” from one node to a new one](/securityTips.md#move-the-validator-soul-from-server-a-to-server-b)
+[Move the “Validator soul” from one node to a new one](/validadores/securityTips.md#move-the-validator-soul-from-server-a-to-server-b)
 
-[Close RPC port](/securityTips.md#Close-RPC-port)
+[Close RPC port](/validadores/securityTips.md#Close-RPC-port)
 
-[Change SSH port](/securityTips.md#Change-SSH-port)
+[Change SSH port](/validadores/securityTips.md#Change-SSH-port)
 
 ### Summary
 
