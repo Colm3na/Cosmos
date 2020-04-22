@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-Puedes encontrar información para los <a href="https://github.com/Colm3na/Cosmos-Validators/tree/wimelTesting/delegadores">delegadores</a> y los <a href="https://github.com/Colm3na/Cosmos-Validators/tree/wimelTesting/validadores"> validadores.</a>
+Puedes encontrar información para los <a href="https://github.com/Colm3na/Cosmos/tree/master/delegadores">delegadores</a> y los <a href="https://github.com/Colm3na/Cosmos/tree/master/validadores"> validadores.</a>
 </p>
 
 <p align="center">
