@@ -34,8 +34,8 @@ def write_file_chains():
 	output2 = os.popen(command2).read()
 
 if __name__ == "__main__":
-	write_file_chains()
+	write_file_chains() #list all chains configured, the more the best :)
 	while 1==1:
-		get_coins()
+		get_coins() 
 		print("Done!")
-		time.sleep(301)  #(60*5+1)
+		time.sleep(301)  #(60*5+1) #Time to try again
